@@ -35,6 +35,9 @@ class StudentSignUpForm(UserCreationForm):
 class ParentSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
+        first_name = forms.CharField(max_length=30)
+        last_name = forms.CharField(max_length=30)
+        email = forms.EmailField()
 
     def save(self, commit=True):
         user = super().save(commit=False)
