@@ -7,7 +7,7 @@ class TeacherSignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(max_length=30)
     email = forms.EmailField()
-    
+
     class Meta(UserCreationForm.Meta):
         model = User
 
@@ -21,6 +21,9 @@ class TeacherSignUpForm(UserCreationForm):
 class StudentSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
+        first_name = forms.CharField(max_length=30)
+        last_name = forms.CharField(max_length=30)
+        email = forms.EmailField()
 
     def save(self, commit=True):
         user = super().save(commit=False)
