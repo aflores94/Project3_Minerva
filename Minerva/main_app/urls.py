@@ -6,4 +6,4 @@ urlpatterns = [
     path('signup/', signup, name='signup'),
     path('accounts/login/', logout_view, name='login'),
     path('logout/', login_view, name='login'),
-]
+]git
