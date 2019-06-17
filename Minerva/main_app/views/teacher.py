@@ -21,3 +21,7 @@ class TeacherSignUpView(CreateView):
         user = form.save()
         login(self.request, user)
         return redirect('Teachers/index.html')
+
+
+def index(request):
+    return render(request, 'Teachers/index.html')
