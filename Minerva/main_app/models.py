@@ -6,13 +6,12 @@ class Student(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    parents = models.ForeignKey(Parent, on_delete=models.CASCADE, default=None)
     courses = M2M
     teachers = M2M
     assignments = M2M
 
 
-class Teacher(models.Model): 
+class Teacher(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
@@ -28,7 +27,8 @@ class Parent(models.model):
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
     phone_number = models.IntegerField(min_length=10)
-    students = 
+    students = models.ForeignKey(Student, on_delete=models.CASCADE)
+
 
 class Assignments(models.model):
     due_date = models.DateField()
@@ -60,4 +60,4 @@ class Courses(models.model):
         default=None,
     )
     course_number = models.IntegerField()
-    classroom = 
+    classroom = models.CharField()
