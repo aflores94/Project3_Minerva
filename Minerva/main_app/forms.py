@@ -5,7 +5,9 @@ from .models import User, Student, Teacher, Parent
 
 class TeacherSignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30)
-
+    last_name = forms.CharField(max_length=30)
+    email = forms.EmailField()
+    
     class Meta(UserCreationForm.Meta):
         model = User
 
