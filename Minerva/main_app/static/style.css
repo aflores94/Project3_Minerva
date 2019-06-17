@@ -1,9 +1,33 @@
-body{
-    display: block;
-    margin: 0 auto;
-    font-family: 'Open Sans', sans-serif;
-}
-
-#Minerva-Logo{
-    font-family: 'Josefin Sans', sans-serif;
-}
+body {
+    font-family: Open-sans, sans serif;
+  }
+  
+  div {
+    height: 500px;
+    padding-top: 40px;
+    padding_left: 40px;
+    margin: 40px, 0px 40px, 0px;
+  }
+  
+  .container {
+    align-items: center;
+    font-size: 30px;
+  }
+  
+  .container > div {
+    border: 3px #1a0d00 solid;
+    height: 300px;
+    border-radius: 12px;
+    margin: 3px,3px,3px,3px;
+    text-align: center;
+  }
+  
+  .container > h3 {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  #Minerva-Logo {
+    font-family: "Josefin Sans", sans-serif;
+    color: #1a0d00, black;
+  }
