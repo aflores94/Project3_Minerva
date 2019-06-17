@@ -16,3 +16,10 @@ class ParentSignUpView(CreateView):
         kwargs['user_type'] = 'parent'
         return super().get_context_data(**kwargs)
 
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('Parents/index.html')
+
+def index(request):
+    return render(request, 'Parents/index.html')  
