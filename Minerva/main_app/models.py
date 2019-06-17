@@ -6,8 +6,7 @@ class Student(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    courses = M2M
-    teachers = M2M
+    courses = models.ManyToManyField(Courses)
     assignments = M2M
 
 
@@ -17,8 +16,8 @@ class Teacher(models.Model):
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
     phone_number = models.IntegerField(min_length=10)
-    courses = 
-    students = M2M
+    courses = models.ManyToManyField(Courses)
+    students = models.ManyToManyField(Student)
 
 
 class Parent(models.model):
@@ -32,7 +31,7 @@ class Parent(models.model):
 
 class Assignments(models.model):
     due_date = models.DateField()
-    classroom = M2M
+    classroom = models.ManyToManyField(Classroom)
     description = models.TextField(max_length=300)
     title = models.CharField(max_length=50)
     document = models.FileField()
@@ -42,7 +41,7 @@ class Classroom(models.model):
     courses = models.ForeignKey(Course, on_delete=models.CASCADE)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     room_number = models.IntegerField()
-    students = M2M
+    students = models.ManyToManyField(Student)
     time = models.TimeField()
 
 
