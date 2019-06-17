@@ -19,4 +19,4 @@ class StudentSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect(#this needs to link to the student home page)
+        return redirect('Students/index.html')
