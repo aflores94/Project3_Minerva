@@ -13,7 +13,7 @@ def home(request):
         elif request.user.is_student:
             return redirect('Students/index.html')
         else:
-            return redirect('Parents/index.html')
+            return redirect('parent_index')
     return render(request, 'home.html')
 
 
