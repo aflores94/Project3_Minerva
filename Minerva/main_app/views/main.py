@@ -9,9 +9,9 @@ class SignUpView(TemplateView):
 def home(request):
     if request.user.is_authenticated:
         if request.user.is_teacher:
-            return redirect('Teachers/home.html')
+            return redirect('teacher_index')
         elif request.user.is_student:
-            return redirect('Students/index.html')
+            return redirect('studnet_index')
         else:
             return redirect('parent_index')
     return render(request, 'home.html')
