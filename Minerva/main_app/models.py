@@ -15,7 +15,7 @@ class Teacher(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    phone_number = models.IntegerField(min_length=10)
+    phone_number = models.IntegerField(max_length=10)
     courses = models.ManyToManyField(Courses)
     students = models.ManyToManyField(Student)
 
@@ -25,7 +25,7 @@ class Parent(models.model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    phone_number = models.IntegerField(min_length=10)
+    phone_number = models.IntegerField(max_length=10)
     students = models.ForeignKey(Student, on_delete=models.CASCADE)
 
 
