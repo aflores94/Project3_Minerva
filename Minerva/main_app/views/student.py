@@ -19,7 +19,7 @@ class StudentSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('Students/index.html')
+        return redirect('student_index')
 
 
 def index(request):
