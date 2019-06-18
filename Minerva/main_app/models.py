@@ -19,15 +19,8 @@ class Student(models.Model):
     email = models.EmailField()
     courses = models.ManyToManyField(Courses)
     assignments = models.ManytoManyField(Assignments)
-class Teacher(models.Model):
-    user = models.OneToOneField(
-        User, on_delete=models.CASCADE, primary_key=True)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    email = models.EmailField()
-    phone_number = models.IntegerField(min=10)
-    courses = models.ManyToManyField(Courses)
-    students = models.ManyToManyField(Student)
+
+
 
 
 class Parent(models.Model):
@@ -60,16 +53,27 @@ class Classroom(models.model):
 
 class Courses(models.Model):
     title = models.CharField(max_length=50)
-    # CATEGORIES = (
-    #     (ENG, 'English'),
-    #     (MATH, 'Mathematics'),
-    #     (LANG, 'Foreign Language'),
-    #     (HIST, 'History'),
-    #     (SCI, 'Science')
-    # )
-    # category = models.CharField(
-    #     choices=CATEGORIES,
-    #     default=None,
-    # )
+    CATEGORIES = (
+        (ENG, 'English'),
+        (MATH, 'Mathematics'),
+        (LANG, 'Foreign Language'),
+        (HIST, 'History'),
+        (SCI, 'Science')
+    )
+    category = models.CharField(
+        choices=CATEGORIES,
+        default=None,
+    )
     course_number = models.IntegerField()
     classroom = models.CharField(max_length=30)
+
+
+class Teacher(models.Model):
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, primary_key=True)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    email = models.EmailField()
+    phone_number = models.IntegerField(min=10)
+    courses = models.ManyToManyField(Courses)
+    students = models.ManyToManyField(Student)
