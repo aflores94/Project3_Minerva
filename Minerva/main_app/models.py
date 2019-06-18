@@ -19,8 +19,6 @@ class Student(models.Model):
     email = models.EmailField()
     courses = models.ManyToManyField(Courses)
     assignments = models.ManytoManyField(Assignments)
-
-
 class Teacher(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
@@ -46,7 +44,7 @@ class Assignment(models.Model):
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='assignments')
     due_date = models.DateField()
-    classroom = models.ManyToManyField(Classroom)
+    # classroom = models.ManyToManyField(Classroom)
     description = models.TextField(max_length=300)
     title = models.CharField(max_length=50)
     document = models.FileField()
@@ -60,18 +58,18 @@ class Classroom(models.model):
     time = models.TimeField()
 
 
-class Courses(models.model):
-    title = models.CharField()
-    CATEGORIES = (
-        (ENG, 'English'),
-        (MATH, 'Mathematics'),
-        (LANG, 'Foreign Language'),
-        (HIST, 'History'),
-        (SCI, 'Science')
-    )
-    category = models.CharField(
-        choices=CATEGORIES,
-        default=None,
-    )
+class Courses(models.Model):
+    title = models.CharField(max_length=50)
+    # CATEGORIES = (
+    #     (ENG, 'English'),
+    #     (MATH, 'Mathematics'),
+    #     (LANG, 'Foreign Language'),
+    #     (HIST, 'History'),
+    #     (SCI, 'Science')
+    # )
+    # category = models.CharField(
+    #     choices=CATEGORIES,
+    #     default=None,
+    # )
     course_number = models.IntegerField()
     classroom = models.CharField(max_length=30)
