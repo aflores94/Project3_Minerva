@@ -20,7 +20,13 @@ class ParentSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
+
         return redirect('parent_index')
 
-def index(request):
+def s_index(request):
     return render(request, 'Parents/s_index.html')  
+
+
+def c_index(request):
+    return render(request, 'Parents/c_index.html')  
+
