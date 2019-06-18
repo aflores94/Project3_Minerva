@@ -7,6 +7,7 @@ from django.views.generic import CreateView, ListView, UpdateView
 from ..forms import ParentSignUpForm
 from ..models import Parent, User
 
+
 class ParentSignUpView(CreateView):
     model = User
     form_class = ParentSignUpForm
@@ -19,7 +20,7 @@ class ParentSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('Parents/index.html')
+        return redirect('parent_index')
 
 def index(request):
-    return render(request, 'Parents/index.html')  
+    return render(request, 'Parents/s_index.html')  
