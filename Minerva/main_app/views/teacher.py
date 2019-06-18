@@ -20,7 +20,7 @@ class TeacherSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('teacher_index')
+        return redirect('teacher_class_index')
 
 def ass_assign(request):
     return render(request, 'Teachers/ass_assign.html')
