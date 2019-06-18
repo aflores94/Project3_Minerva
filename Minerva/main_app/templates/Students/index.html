@@ -1,4 +1,70 @@
-{% extends "base.html"%}
-{% block content %}
-<h1>this is the student index.html</h1>
-{% endblock%}
+
+<nav class="Student-nav navbar navbar-default navbar-light" style="background-color: #ffe680">
+    <div class="navbar-expand-sm d-flex flex-grow-1 text-right">
+      <ul class="navbar-nav ml-auto flex-nowrap active">
+        <li class="nav-item">
+          <a href="#" class="nav-link m-2 menu-item nav-active">My Courses</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link m-2 menu-item">Submitted </ br>Assignments</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link m-2 menu-item">Logout</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+<main class="container">
+<!--     {% block content%} -->
+<!--Student NavBar--->
+
+<table class="table table-striped">
+  <thead>
+    <th scope="col">Course Name</th>
+    <th scope="col">Course Number</th>
+    <th scope="col">Assignments</th>
+    <th scope="col">Assigned Task</th>
+    <th scope="col">Task Details</th>
+    <th scope="col">Submit</th>
+  </thead>
+  <tbody>
+    <tr>
+      <!--         {model input -->
+      <td>Subject</td>
+      <!-- assignment.subject-->
+      <td>Course#</td>
+      <!--Assignment.classroom--->
+      <td>subject.N</td>
+      <td>Due Date</td>
+      <!--assignment.due_date-->
+      <td><a herf="#">Details</a> </td>
+      <td><input type="checkbox" method="DELETE"></td>
+    </tr>
+    <tr>
+<!--these are just placeholders-->
+      <td>Subject</td>
+      <td>Course#</td>
+      <td>subject.N</td>
+      <td>Due Date</td>
+      <td><a herf="#">Details</a> </td>
+      <td><input type="checkbox" method="DELETE"></td>
+    </tr>
+    <tr>
+      <td>Subject</td>
+      <td>Course#</td>
+      <td>subject.N</td>
+      <td>Due Date</td>
+      <td><a herf="#">Details</a> </td>
+      <td><input type="checkbox" method="DELETE"></td>
+    </tr>
+    <tr>
+      <td>Subject</td>
+      <td>Course#</td>
+      <td>subject.N</td>
+      <td>Due Date</td>
+      <td><a herf="#">Details</a> </td>
+      <td><input type="checkbox"></td>
+    </tr>
+  </tbody>
+</table>
+

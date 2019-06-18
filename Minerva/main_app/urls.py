@@ -1,5 +1,5 @@
 from django.urls import path 
-from .views import main, student, parent, teacher
+from .views import teacher, student, parent, main
 
 urlpatterns = [
     path('', main.home, name='home'),
@@ -13,3 +13,4 @@ urlpatterns = [
     path('Parents/home.html', parent.login, name='login'),
     path('Parents/index.html', parent.index, name='parent_index'),
 ]
+

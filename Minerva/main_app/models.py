@@ -21,11 +21,10 @@ class Student(models.Model):
 class Teacher(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    # phone_number = models.IntegerField(min_length=10)
+
 
 class Parent(models.Model):
     user = models.OneToOneField(
@@ -33,7 +32,8 @@ class Parent(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    # phone_number = models.IntegerField(min_length=10)
+    phone_number = models.IntegerField(min_length=10)
+    students = models.ForeignKey(Student, on_delete=models.CASCADE)
 
 
 class Assignment(models.Model):
@@ -43,4 +43,27 @@ class Assignment(models.Model):
     description = models.TextField(max_length=300)
     title = models.CharField(max_length=50)
     document = models.FileField()
+
+class Classroom(models.model):
+    courses = models.ForeignKey(Course, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    room_number = models.IntegerField()
+    time = models.TimeField()
+
+
+class Courses(models.model):
+    title = models.CharField()
+    CATEGORIES = (
+        (ENG, 'English'),
+        (MATH, 'Mathematics'),
+        (LANG, 'Foreign Language'),
+        (HIST, 'History'),
+        (SCI, 'Science')
+    )
+    category = models.CharField(
+        choices=CATEGORIES,
+        default=None,
+    )
+    course_number = models.IntegerField()
+    classroom = models.CharField()
 
