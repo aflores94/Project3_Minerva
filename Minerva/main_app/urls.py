@@ -1,14 +1,17 @@
 from django.urls import path 
-from views import *
+from .views import teacher, student, parent, main
 
 urlpatterns = [
-    path('', home, name='home'),
-    path('signup/', signup, name='signup'),
-    path('accounts/login/', logout_view, name='login'),
-    path('logout/', login_view, name='login'),
-    path('home/', parent.home, name='parent_home'),
-    path('home/', parent.home, name='parent_home'),
-    path('home/', students.home, name='student_home'),
-    path('home/', teachers.home, name='teacher_home'),
+    path('', main.home, name='home'),
 
+    path('Students/home.html', student.login, name='login'),
+    path('Students/index.html', student.index, name='student_index'),
+
+    path('Teachers/home.html', teacher.login, name='login'),
+    path('Teachers/index.html', teacher.index, name='teacher_index'),
+
+    path('Parents/home.html', parent.login, name='login'),
+    path('Parents/index.html', parent.index, name='parent_index'),
 ]
+
+
