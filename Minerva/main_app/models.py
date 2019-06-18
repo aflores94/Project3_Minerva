@@ -20,13 +20,14 @@ class Student(models.Model):
     courses = models.ManyToManyField(Courses)
     assignments = models.ManytoManyField(Assignments)
 
+
 class Teacher(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    phone_number = models.IntegerField(max_length=10)
+    phone_number = models.IntegerField(min=10)
     courses = models.ManyToManyField(Courses)
     students = models.ManyToManyField(Student)
 
@@ -37,7 +38,7 @@ class Parent(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    phone_number = models.IntegerField(max_length=10)
+    phone_number = models.IntegerField(min=10)
     students = models.ForeignKey(Student, on_delete=models.CASCADE)
 
 
@@ -49,6 +50,7 @@ class Assignment(models.Model):
     description = models.TextField(max_length=300)
     title = models.CharField(max_length=50)
     document = models.FileField()
+
 
 class Classroom(models.model):
     courses = models.ForeignKey(Course, on_delete=models.CASCADE)
@@ -72,5 +74,4 @@ class Courses(models.model):
         default=None,
     )
     course_number = models.IntegerField()
-    classroom = models.CharField()
-
+    classroom = models.CharField(max_length=30)
