@@ -22,5 +22,14 @@ class StudentSignUpView(CreateView):
         return redirect('Students/index.html')
 
 
-def index(request):
-    return render(request, 'Students/index.html')
+def ass_index(request):
+    return render(request, 'Students/ass_index.html')
+
+def ass_details(request):
+    return render(request, 'Students/ass_details.html')
+
+def completed_index(request):
+    return render(request, 'Students/Completed.html')
+
+def course_index(request):
+    return render(request, 'Students/course_index.html')
