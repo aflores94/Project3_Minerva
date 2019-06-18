@@ -13,5 +13,3 @@ urlpatterns = [
     path('Parents/home/', parent.login, name='login'),
     path('Parents/index/', parent.index, name='parent_index'),
 ]
-
-

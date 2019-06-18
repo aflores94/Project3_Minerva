@@ -31,12 +31,8 @@ class Courses(models.Model):
 class Teacher(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
-    first_name = Class.objects.get(User.first_name)
-    last_name = Class.objects.get(User.last_name)
-    email = Class.objects.get(User.email)
     phone_number = models.IntegerField(validators=[MaxValueValidator(10)])
     courses = models.ManyToManyField(Courses)
-    students = models.ManyToManyField(Student)
 
 
 class Assignment(models.Model):
@@ -51,9 +47,6 @@ class Assignment(models.Model):
 class Student(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
-    first_name = Class.objects.get(User.first_name)
-    last_name = Class.objects.get(User.last_name)
-    email = Class.objects.get(User.email)
     courses = models.ManyToManyField(Courses)
     assignments = models.ManyToManyField(Assignment)
     teacher = models.ManyToManyField(Teacher)
@@ -71,8 +64,5 @@ class Classroom(models.Model):
 class Parent(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
-    first_name = Class.objects.get(User.first_name)
-    last_name = Class.objects.get(User.last_name)
-    email = Class.objects.get(User.email)
     phone_number = models.IntegerField(validators=[MaxValueValidator(10)])
     students = models.ForeignKey(Student, on_delete=models.CASCADE)
