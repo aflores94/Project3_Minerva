@@ -18,7 +18,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
     courses = models.ManyToManyField(Courses)
-    assignments = M2M
+    assignments = models.ManytoManyField(Assignments)
 
 class Teacher(models.Model):
     user = models.OneToOneField(
