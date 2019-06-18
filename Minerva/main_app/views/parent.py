@@ -21,5 +21,12 @@ class ParentSignUpView(CreateView):
         login(self.request, user)
         return redirect('Parents/index.html')
 
-def index(request):
-    return render(request, 'Parents/index.html')  
+# This shows the course index.
+def c_index(request):
+    return render(request, 'Parents/c_index.html')  
+
+def s_index(request):
+    return render(request, 'Parents/s_index.html')
+
+def s_details(request):
+    return render(request, 'Parents/s_details.html')
