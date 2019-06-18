@@ -11,7 +11,7 @@ def home(request):
         if request.user.is_teacher:
             return redirect('teacher_index')
         elif request.user.is_student:
-            return redirect('studnet_index')
+            return redirect('student_index')
         else:
             return redirect('parent_index')
     return render(request, 'home.html')
