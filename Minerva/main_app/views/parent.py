@@ -21,7 +21,7 @@ class ParentSignUpView(CreateView):
         user = form.save()
         login(self.request, user)
 
-        return redirect('parent_index')
+        return redirect('parent_s_index')
 
 # This shows the course index.
 def c_index(request):
