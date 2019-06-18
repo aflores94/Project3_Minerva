@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.core.validators import MaxValueValidator
 # Create your models here.
 
 
@@ -26,7 +27,7 @@ class Teacher(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    phone_number = models.IntegerField(min=10)
+    phone_number = models.IntegerField(validators=[MaxValueValidator(10)])
     # courses = models.ManyToManyField(Courses)
     students = models.ManyToManyField(Student)
 
@@ -37,7 +38,7 @@ class Parent(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    phone_number = models.IntegerField(min=10)
+    phone_number = models.IntegerField(validators=[MaxValueValidator(10)])
     students = models.ForeignKey(Student, on_delete=models.CASCADE)
 
 
