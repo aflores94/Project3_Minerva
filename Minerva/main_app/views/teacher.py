@@ -20,8 +20,8 @@ class TeacherSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('Teachers/index.html')
+        return redirect('Teachers/classroom_index.html')
 
 
 def index(request):
-    return render(request, 'Teachers/index.html')
+    return render(request, 'Teachers/classroom_index.html')
