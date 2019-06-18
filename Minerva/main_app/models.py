@@ -17,8 +17,8 @@ class Student(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    courses = models.ManyToManyField(Courses)
-    assignments = M2M
+    # courses = models.ManyToManyField(Courses)
+    # assignments = M2M
 
 class Teacher(models.Model):
     user = models.OneToOneField(
@@ -26,8 +26,8 @@ class Teacher(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    phone_number = models.IntegerField(min_length=10)
-    courses = models.ManyToManyField(Courses)
+    phone_number = models.IntegerField(min=10)
+    # courses = models.ManyToManyField(Courses)
     students = models.ManyToManyField(Student)
 
 
@@ -37,7 +37,7 @@ class Parent(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    phone_number = models.IntegerField(min_length=10)
+    phone_number = models.IntegerField(min=10)
     students = models.ForeignKey(Student, on_delete=models.CASCADE)
 
 
@@ -45,32 +45,32 @@ class Assignment(models.Model):
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='assignments')
     due_date = models.DateField()
-    classroom = models.ManyToManyField(Classroom)
+    # classroom = models.ManyToManyField(Classroom)
     description = models.TextField(max_length=300)
     title = models.CharField(max_length=50)
     document = models.FileField()
 
-class Classroom(models.model):
-    courses = models.ForeignKey(Course, on_delete=models.CASCADE)
+class Classroom(models.Model):
+    # courses = models.ForeignKey(Course, on_delete=models.CASCADE)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     room_number = models.IntegerField()
     students = models.ManyToManyField(Student)
     time = models.TimeField()
 
 
-class Courses(models.model):
-    title = models.CharField()
-    CATEGORIES = (
-        (ENG, 'English'),
-        (MATH, 'Mathematics'),
-        (LANG, 'Foreign Language'),
-        (HIST, 'History'),
-        (SCI, 'Science')
-    )
-    category = models.CharField(
-        choices=CATEGORIES,
-        default=None,
-    )
+class Courses(models.Model):
+    title = models.CharField(max_length=50)
+    # CATEGORIES = (
+    #     (ENG, 'English'),
+    #     (MATH, 'Mathematics'),
+    #     (LANG, 'Foreign Language'),
+    #     (HIST, 'History'),
+    #     (SCI, 'Science')
+    # )
+    # category = models.CharField(
+    #     choices=CATEGORIES,
+    #     default=None,
+    # )
     course_number = models.IntegerField()
-    classroom = models.CharField()
+    classroom = models.CharField(max_length=50)
 
