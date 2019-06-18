@@ -24,6 +24,7 @@ class Courses(models.Model):
     category = models.CharField(
         choices=CATEGORIES,
         default=None,
+        max_length=50,
     )
     course_number = models.IntegerField()
 
@@ -31,9 +32,9 @@ class Courses(models.Model):
 class Teacher(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
-    phone_number = models.IntegerField(validators=[MaxValueValidator(10)])
+    phone_number = models.CharField(max_length=10, default='0000000000')
     courses = models.ManyToManyField(Courses)
-
+    
 
 class Assignment(models.Model):
     owner = models.ForeignKey(
@@ -44,13 +45,18 @@ class Assignment(models.Model):
     document = models.FileField()
 
 
+class Parent(models.Model):
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, primary_key=True)
+    phone_number = models.CharField(max_length=10, default='0000000000')
+
 class Student(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
     courses = models.ManyToManyField(Courses)
     assignments = models.ManyToManyField(Assignment)
     teacher = models.ManyToManyField(Teacher)
-
+    parent = models.ForeignKey(Parent, on_delete=models.CASCADE)
 
 class Classroom(models.Model):
     courses = models.ForeignKey(Courses, on_delete=models.CASCADE)
@@ -59,10 +65,3 @@ class Classroom(models.Model):
     students = models.ManyToManyField(Student)
     assignment = models.ManyToManyField(Assignment)
     time = models.TimeField()
-
-
-class Parent(models.Model):
-    user = models.OneToOneField(
-        User, on_delete=models.CASCADE, primary_key=True)
-    phone_number = models.IntegerField(validators=[MaxValueValidator(10)])
-    students = models.ForeignKey(Student, on_delete=models.CASCADE)

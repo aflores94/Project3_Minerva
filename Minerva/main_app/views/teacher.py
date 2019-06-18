@@ -22,5 +22,14 @@ class TeacherSignUpView(CreateView):
         login(self.request, user)
         return redirect('teacher_index')
 
-def index(request):
+def ass_assign(request):
+    return render(request, 'Teachers/ass_assign.html')
+
+def classroom_index(request):
     return render(request, 'Teachers/classroom_index.html')
+
+def classroom_s_index(request):
+    return render(request, "Teachers/classroom_s_index.html")
+
+def s_details(request):
+    return render(request, 'Teachers/s_details.html')
