@@ -19,7 +19,7 @@ from main_app.views import main, student, parent, teacher
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path( '', include('main_app.urls')),
+    path('', include('main_app.urls')),
     path('accounts/signup/', main.SignUpView.as_view(), name="signup"),
     path('accounts/signup/Students/', student.StudentSignUpView.as_view(), name="student_signup"),
     path('accounts/signup/Teachers/', teacher.TeacherSignUpView.as_view(), name="teacher_signup"),

@@ -21,14 +21,18 @@ class ParentSignUpView(CreateView):
         user = form.save()
         login(self.request, user)
 
-        return redirect('parent_index')
+        return redirect('parent_s_index')
 
 # This shows the course index.
 def c_index(request):
-    return render(request, 'Parents/c_index.html')  
+    return render(request, 'Parents/c_index.html')
 
 def s_index(request):
     return render(request, 'Parents/s_index.html')
 
 def s_details(request):
     return render(request, 'Parents/s_details.html')
+
+def addstudent(request): 
+    
+    path('dogs/create/', views.DogCreate.as_view(), name='dogs_create'),
